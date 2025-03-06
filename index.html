@@ -1,0 +1,3000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risograph Preview</title>
+    <style>
+        html{
+            width:100vw;
+            height:100vh;
+        }
+
+        h1 {
+        font-size: 30rpx;
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 1vh; /* Adjust this value for better positioning */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-family:Arial, Helvetica, sans-serif; 
+
+        }
+        body{
+            overflow:hidden;
+            /* background: radial-gradient(circle, white 0%, black 100%); */
+            background: grey;
+            font-size: 16px;
+            width:100vw;
+            height:100vh;
+        }
+        /* STYLE FOR THE INPUT FIELD */
+        #charInput1 {
+            border-radius: 2vh;
+        }
+
+        #charInput2 {
+            border-radius: 2vh;
+        }
+
+        /* STYLE FOR THE SUBMIT BUTTON */
+        #submitButton {
+            background-color: lightgrey;
+            border-radius: 4vh;
+        }
+
+        /* STYLE FOR THE IMAGE */
+        #displayedImage {
+            display: none; /* This line is mandatory */
+        }
+
+        #displayedImage2 {
+            display: none; /* This line is mandatory */
+        }
+
+        .base {
+            position: fixed;
+            /* animation: revealAnimation 6s ease-in forwards; */
+        }
+
+        /* @keyframes revealAnimation {
+        from {
+        clip-path: inset(0 0 100% 0);
+        }
+        to {
+        clip-path: inset(0 0 0 0);
+        }
+        } */
+
+        .ontop {
+            position: absolute;
+            /* animation: revealAnimation 6s ease-in forwards; */
+        }
+
+        .group {
+            display: flex;
+            position: relative;
+            gap: 1rem;
+            width: 100%;
+            height: 10%;
+            margin-top: 5vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .group2 {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            height: 10%;
+            margin-top: 40vh ;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            width: 7rem;
+            height: 2rem;
+        }
+
+    
+
+    </style>
+</head>
+<body>
+
+    <h1> RISOGRAPHY PREVIEW </h1>
+
+    <div class="group">
+    <!-- INPUT FIELD FOR 1 CHARACTER -->
+    <input type="text" placeholder="Enter a letter here" id="charInput1" maxlength="1" class="text">
+    <input type="text" placeholder="Enter a letter here" id="charInput2" maxlength="1" class="text">
+
+    <!-- BUTTON TO DISPLAY IMAGE -->
+    <button onclick="displayImage()" id="submitButton">Print</button>
+    </div>  
+
+    <div class="group2">
+    <!-- IMAGE TO DISPLAY -->
+    <img id="displayedImage" src="" alt="Displayed Image" class="base">
+    <img id="displayedImage2" src="" alt="Displayed Image" class="ontop">
+    </div>
+  
+
+    <!-- Image Display Script Below -->
+    <script>
+         document.getElementById("charInput1").addEventListener("input", 
+        function(event){
+            let input = event.target.value.trim();
+            console.log("alert worked")
+
+            if(!/^[A-Za-z]$/. test (input) && input !== ""){
+            alert ("Invalid input! Please enter a letter");
+            event.target.value = "";
+         
+        }}
+         );
+
+         document.getElementById("charInput2").addEventListener("input", 
+        function(event){
+            let input = event.target.value.trim();
+            console.log("alert worked")
+
+            if(!/^[A-Za-z]$/. test (input) && input !== ""){
+            alert ("Invalid input! Please enter a letter or number");
+            event.target.value = "";
+         
+        }}
+         );
+
+        //  function validateLetter () {
+        //     let input1 = document.getElementById("charInput1").value.trim();
+        //     let input2 = document.getElementById("charInput2").value.trim();
+
+
+        function displayImage() {
+            const imgElement = document.getElementById("displayedImage");
+            const imgElement2 = document.getElementById("displayedImage2");
+
+            //Letter
+            const input1_letter = document.getElementById("charInput1").value.toUpperCase();
+            const input2_letter = document.getElementById("charInput2").value.toUpperCase();
+            
+            //Number
+            //const input1_number = input1_letter.charCodeAt(0); //Converts the letter to a number (https://www.ascii-code.com); For instance, 'A' is 65 in ASCII
+            //const input2_number = input2_letter.charCodeAt(0); //Converts the letter to a number (https://www.ascii-code.com); For instance, 'A' is 65 in ASCII
+
+            // const input1_number = input1_letter.charCodeAt(0) - 64; // A = 1, B = 2, etc.
+            //const input2_number = input2_letter.charCodeAt(0) - 64; // A = 1, B = 2, etc.
+
+            //const input1_number = input1_letter.charCodeAt(0) - 64;
+            //const input2_number = input2_letter.charCodeAt(0) - 64;
+
+            // const numToLetter = (num) => Strings.fromCharCode(num + 64);
+            // console.log(numToLetter(1));
+
+            //console.log("value of input1", input1_letter);
+            //console.log("type of input1", typeof input1_letter);
+            // console.log("hello");
+
+        
+        
+
+        if(input1_letter === "A") {
+                imgElement.src = "2/circles-01.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "B") {
+                imgElement.src = "2/circles-02.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+        
+        if(input1_letter === "C") {
+            imgElement.src = "2/circles-03.png"
+            imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+                
+        if(input1_letter === "D") {
+                imgElement.src = "2/circles-04.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+                
+        if(input1_letter === "E") {
+                imgElement.src = "2/circles-05.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "F") {
+                imgElement.src = "2/circles-06.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "G") {
+                imgElement.src = "2/circles-07.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "H") {
+                imgElement.src = "2/circles-08.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "I") {
+                imgElement.src = "2/circles-09.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "J") {
+                imgElement.src = "2/circles-10.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "K") {
+                imgElement.src = "2/circles-11.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "L") {
+                imgElement.src = "2/circles-12.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "M") {
+                imgElement.src = "2/circles-13.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "N") {
+                imgElement.src = "2/circles-14.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "O") {
+                imgElement.src = "2/circles-15.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "P") {
+                imgElement.src = "2/circles-16.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "Q") {
+                imgElement.src = "2/circles-17.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "R") {
+                imgElement.src = "2/circles-18.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "S") {
+                imgElement.src = "2/circles-19.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "T") {
+                imgElement.src = "2/circles-20.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        
+        if(input1_letter === "U") {
+                imgElement.src = "2/circles-21.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "V") {
+                imgElement.src = "2/circles-22.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "W") {
+                imgElement.src = "2/circles-23.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        if(input1_letter === "X") {
+                imgElement.src = "2/circles-24.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+
+        
+                
+        if(input1_letter === "Y") {
+                imgElement.src = "2/circles-25.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+         
+
+        if(input1_letter === "Z") {
+                imgElement.src = "2/circles-26.png"
+                imgElement.style.display = "block";}
+
+                if (input2_letter === "A") {
+                imgElement2.src = "1/circle-01.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "B"){
+                imgElement2.src = "1/circle-02.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "C"){
+                imgElement2.src = "1/circle-03.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "D"){
+                imgElement2.src = "1/circle-04.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "E"){
+                imgElement2.src = "1/circle-05.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "F"){
+                imgElement2.src = "1/circle-06.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "G"){
+                imgElement2.src = "1/circle-07.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "H"){
+                imgElement2.src = "1/circle-08.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "I"){
+                imgElement2.src = "1/circle-09.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "J"){
+                imgElement2.src = "1/circle-10.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "K"){
+                imgElement2.src = "1/circle-11.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "L"){
+                imgElement2.src = "1/circle-12.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "M"){
+                imgElement2.src = "1/circle-13.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "N"){
+                imgElement2.src = "1/circle-14.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "O"){
+                imgElement2.src = "1/circle-15.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "P"){
+                imgElement2.src = "1/circle-16.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Q"){
+                imgElement2.src = "1/circle-17.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "R"){
+                imgElement2.src = "1/circle-18.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "S"){
+                imgElement2.src = "1/circle-19.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "T"){
+                imgElement2.src = "1/circle-20.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "U"){
+                imgElement2.src = "1/circle-21.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "V"){
+                imgElement2.src = "1/circle-22.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "W"){
+                imgElement2.src = "1/circle-23.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "X"){
+                imgElement2.src = "1/circle-24.png"
+                imgElement2.style.display = "block";}
+                
+                if (input2_letter === "Y"){
+                imgElement2.src = "1/circle-25.png"
+                imgElement2.style.display = "block";}
+
+                if (input2_letter === "Z"){
+                imgElement2.src = "1/circle-26.png"
+                imgElement2.style.display = "block";}
+    }
+    </script>
+
+</body>
+</html>
